@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página estilo Jaquebue</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: #111;
+      color: #fff;
+    }
+
+    .container {
+      background: #1c1c1c;
+      padding: 2rem;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    }
+
+    h1 {
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    input, button, label {
+      width: 100%;
+      padding: 0.8rem;
+      margin: 0.5rem 0;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    input[type="email"], input[type="tel"], input[type="text"] {
+      background: #333;
+      color: #fff;
+    }
+
+    input[type="checkbox"] {
+      width: auto;
+      margin-right: 0.5rem;
+    }
+
+    button {
+      background: #4CAF50;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #45a049;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Paso 1: Email -->
+    <div id="step1">
+      <h1>Ingresa tu correo</h1>
+      <input type="email" id="email" placeholder="tu@email.com" required>
+      <div style="text-align:left; margin: 10px 0;">
+        <input type="checkbox" id="policy">
+        <label for="policy">Acepto la política de privacidad</label>
+      </div>
+      <button onclick="goToStep(2)">Continuar</button>
+    </div>
+
+    <!-- Paso 2: Teléfono -->
+    <div id="step2" class="hidden">
+      <h1>Ingresa tu teléfono</h1>
+      <input type="tel" id="phone" placeholder="Ej: +34 600 123 456" required>
+      <button onclick="goToStep(3)">Continuar</button>
+    </div>
+
+    <!-- Paso 3: Nombre -->
+    <div id="step3" class="hidden">
+      <h1>Tu nombre</h1>
+      <input type="text" id="name" placeholder="Escribe tu nombre" required>
+      <button onclick="finish()">Finalizar</button>
+    </div>
+
+    <!-- Paso final -->
+    <div id="step4" class="hidden">
+      <h1>¡Registro completo! 🎉</h1>
+      <p>Gracias por registrarte.</p>
+    </div>
+  </div>
+
+  <script>
+    function goToStep(step) {
+      document.querySelectorAll(".container > div").forEach(div => div.classList.add("hidden"));
+      document.getElementById("step" + step).classList.remove("hidden");
+    }
+
+    function finish() {
+      goToStep(4);
+    }
+  </script>
+</body>
+</html>
