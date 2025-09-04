@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Página estilo Jaquebue</title>
+  <title>Página con Menú</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -24,7 +24,7 @@
       max-width: 400px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.5);
       display: grid;
-      gap: 1rem; /* Espacio uniforme entre elementos */
+      gap: 1rem;
     }
 
     h1 {
@@ -77,6 +77,21 @@
     .hidden {
       display: none;
     }
+
+    /* Estilo del menú */
+    .menu {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .menu button {
+      background: #333;
+      border: 1px solid #555;
+    }
+
+    .menu button:hover {
+      background: #444;
+    }
   </style>
 </head>
 <body>
@@ -106,10 +121,14 @@
       <button onclick="finish()">Finalizar</button>
     </div>
 
-    <!-- Paso final -->
+    <!-- Menú después de registrarse -->
     <div id="step4" class="hidden">
-      <h1>¡Registro completo! 🎉</h1>
-      <p style="text-align:center;">Gracias por registrarte.</p>
+      <h1>¡Bienvenido! 🎉</h1>
+      <div class="menu">
+        <button onclick="alert('Abrir perfil')">👤 Perfil</button>
+        <button onclick="alert('Abrir configuración')">⚙️ Configuración</button>
+        <button onclick="alert('Cerrar sesión')">🚪 Cerrar sesión</button>
+      </div>
     </div>
   </div>
 
@@ -120,7 +139,14 @@
     }
 
     function finish() {
-      goToStep(4);
+      // Guardar los datos ingresados
+      let email = document.getElementById("email").value;
+      let phone = document.getElementById("phone").value;
+      let name = document.getElementById("name").value;
+
+      console.log("📩 Datos del usuario:", email, phone, name);
+
+      goToStep(4); // mostrar el menú
     }
   </script>
 </body>
